@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="sound(this)" style="--clr:#1e9bff"><span>Music Off</span></button>
+        <button id="clicked" style="--clr:#1e9bff"><span>Click Me</span></button>
+    </div>
+
+    <script>
+        const button = document.getElementById('clicked');
+        const arr = ["You're 'sweet'", "Am I make your day?", "If yes,..."];
+        const arr1 = ["I just want to say that....", "That's my favorite song :)", "Good luck with Quiz 2!"];
+
+        let i = 0;
+
+        button.addEventListener('click', () => {
+            if (i < arr.length) {
+                button.innerText = arr[i];
+                i++;
+            }
+
+            else if (i < arr.length + arr1.length) {
+                button.innerText = arr1[i - arr.length];
+                i++;
+            }
+
+            else {
+                i = 0; /*Reset*/
+            }
+        });
+
+        function sound(element) {
+            var sound = new Audio('Sweet - Cigarettes After Sex (320 kbps).mp3');
+            sound.play();
+            element.style.visibility = "none";
+            element.innerText = "Music On!";
+            setTimeout(function() {
+                element.style.visibility = "hidden";
+            }, 1000); //1000 mlsecond = 1s
+        }
+    </script>
+
+</body>
+
+</html>
